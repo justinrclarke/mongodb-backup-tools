@@ -28,7 +28,7 @@ aws s3 cp s3://$S3_BUCKET/$S3_PREFIX/$SELECTED_FILE $TEMP_DIR
 tar -zxvf $TEMP_DIR/$SELECTED_FILE -C $TEMP_DIR
 
 # Restore MongoDB database
-mongorestore --host=$MONGO_HOST --port=$MONGO_PORT --username=$MONGO_USERNAME --password=$MONGO_PASSWORD --authenticationDatabase=$MONGO_AUTHDB --nsInclude="$DATABASE_NAME.*" $TEMP_DIR
+mongorestore --host=$MONGO_HOST --port=$MONGO_PORT --username=$MONGO_USERNAME --password=$MONGO_PASSWORD --authenticationDatabase=$MONGO_AUTHDB --nsInclude="$DATABASE_NAME.*" $TEMP_DIR --drop
 
 # Remove temporary files
 rm -rf $TEMP_DIR/$DATABASE_NAME
